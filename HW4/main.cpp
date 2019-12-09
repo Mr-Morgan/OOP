@@ -183,15 +183,21 @@ class Hand
 public:
     Hand() {}
     void Add(Card* card) { hand.push_back(card); }
-    void Clear() { hand.clear(); }
+    void Clear();
     int GetValue() const;
 };//class Hand
+
+void Hand::Clear()
+{
+    for (Card* c : hand) delete c;
+    hand.clear();
+}//void Hand::Clear()
 
 int Hand::GetValue() const
 {
     int score = 0, ace_count = 0;
     for (Card* card : hand)
-        if(card->getValue() == 1) ace_count++;
+        if(card->getValue() == Value::ace) ace_count++;
         else score += card->getValue();
     for (int i = 0; i < ace_count; ++i)
         if (score <= 10) score += 11;
@@ -267,7 +273,7 @@ int main()
         numb_2.push_back(2);
         numb_2.push_back(4);
         printVector(numb_2);
-        vector<int> rez = plusVector(numb_1, 16, numb_2, 8, 2);
+        vector<int> rez = plusVector(numb_1, 16, numb_2, 8, 16);
         printVector(rez);
     cout << "\n\n";
 
