@@ -1,5 +1,15 @@
 #include "hand.h"
 
+Hand::Hand()
+{
+
+}//Hand::Hand()
+
+void Hand::Add(Card *card)
+{
+    hand.push_back(card);
+}//void Hand::Add(Card *card)
+
 void Hand::Clear()
 {
     for (Card* c : hand) delete c;
@@ -20,6 +30,11 @@ int Hand::GetValue() const
 
 void Hand::GetCardsData(std::ostream *os) const
 {
-        for (Card* c : hand) *os << (*c);
-        *os << std::endl;
+    for (Card* c : hand) *os << (*c);
+    *os << std::endl;
 }//void Hand::GetCardsData(std::ostream *os) const
+
+Hand::~Hand()
+{
+    Clear();
+}//Hand::~Hand()

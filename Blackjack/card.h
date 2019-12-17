@@ -3,7 +3,6 @@
 
 #include <iostream>
 #include <string>
-#include <strstream>
 
 #define BlackJack 21
 
@@ -17,13 +16,11 @@ class Card
     bool visible;
 public:
     Card(Suit st, Value vl): s(st), v(vl), visible(false) {}
-    void Flip() { visible = (!visible); }
-    int GetValue() const { return v; }
-    Suit GetSuit() const { return s; }
-    bool GetVisible() const { return visible; }
+    void Flip();
+    int GetValue() const;
+    Suit GetSuit() const;
+    bool GetVisible() const;
+    friend std::ostream& operator<< (std::ostream& os, const Card &c);
 };//class Card
-
-std::ostream& operator<< (std::ostream& os, Card &c);
-
 
 #endif // CARD_H

@@ -7,9 +7,13 @@ SOURCES += \
         card.cpp \
         genericplayer.cpp \
         hand.cpp \
-        main.cpp
+        house.cpp \
+        main.cpp \
+        player.cpp
 
 HEADERS += \
     card.h \
     genericplayer.h \
-    hand.h
+    hand.h \
+    house.h \
+    player.h
