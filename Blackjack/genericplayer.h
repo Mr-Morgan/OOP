@@ -5,13 +5,15 @@
 
 class GenericPlayer : public Hand
 {
+protected:
     std::string name;
 public:
-    GenericPlayer() {}
+    GenericPlayer();
+    virtual ~GenericPlayer();
     virtual bool IsHitting() = 0;
-    bool IsBoosted() { return (GetValue() > BlackJack)? true : false; }
+    bool IsBoosted();
     void Bust();
-    friend std::ostream& operator<< (std::ostream& os, GenericPlayer &gpl);
+    friend std::ostream& operator<< (std::ostream& os, const GenericPlayer &gp);
 };//class GenericPlayer : public Hand
 
 #endif // GENERICPLAYER_H

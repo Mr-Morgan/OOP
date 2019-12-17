@@ -10,7 +10,27 @@ std::string printSuit(Suit s)
     }//switch (s)
 }//std::string printSuit(Suit s)
 
-std::ostream &operator<<(std::ostream &os, Card &c)
+std::ostream &operator<<(std::ostream &os, const Card &c)
 {
-    return c.GetVisible()? os << printSuit(c.GetSuit()) + ' ' << c.GetValue() << "; " : os << "XX; ";
-}//std::ostream &operator<<(std::ostream &os, Card &c)
+    return c.GetVisible()? os << printSuit(c.s) + ' ' << c.v << "; " : os << "XX; ";
+}//std::ostream &Card::operator<<(std::ostream &os, const Card &c)
+
+void Card::Flip()
+{
+    visible = (!visible);
+}//void Card::Flip()
+
+int Card::GetValue() const
+{
+    return v;
+}//int Card::GetValue() const
+
+Suit Card::GetSuit() const
+{
+    return s;
+}//Suit Card::GetSuit() const
+
+bool Card::GetVisible() const
+{
+    return visible;
+}//bool Card::GetVisible() const
