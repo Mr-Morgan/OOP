@@ -5,6 +5,8 @@ CONFIG -= qt
 
 SOURCES += \
         card.cpp \
+        deck.cpp \
+        game.cpp \
         genericplayer.cpp \
         hand.cpp \
         house.cpp \
@@ -13,6 +15,8 @@ SOURCES += \
 
 HEADERS += \
     card.h \
+    deck.h \
+    game.h \
     genericplayer.h \
     hand.h \
     house.h \

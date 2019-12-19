@@ -10,7 +10,7 @@ protected:
 public:
     GenericPlayer();
     virtual ~GenericPlayer();
-    virtual bool IsHitting() = 0;
+    virtual bool IsHitting() const = 0;
     bool IsBoosted();
     void Bust();
     friend std::ostream& operator<< (std::ostream& os, const GenericPlayer &gp);

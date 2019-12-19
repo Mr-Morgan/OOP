@@ -1,37 +1,17 @@
 #include <iostream>
-#include "card.h"
-#include "hand.h"
-#include "genericplayer.h"
+#include "game.h"
 
 /*
-                                                    *******
-                                                    * HW6 *
-                                                    *******
-
-4.  Реализовать класс Player, который наследует от класса GenericPlayer. У этого класса будет 4 метода:
-
-    - `virtual bool IsHitting() const` - реализация чисто виртуальной функции базового класса. Метод спрашивает у пользователя,
-      нужна ли ему еще одна карта и возвращает ответ пользователя в виде `true` или `false`.
-    - `void Win() const` - выводит на экран имя игрока и сообщение, что он выиграл.
-    - `void Lose() const` - выводит на экран имя игрока и сообщение, что он проиграл.
-    - `void Push() const` - выводит на экран имя игрока и сообщение, что он сыграл вничью.
-
-5.  Реализовать класс `House`, который представляет дилера. Этот класс наследует от класса `GenericPlayer`. У него есть 2 метода:
-
-    - virtual bool IsHitting() const - метод указывает, нужна ли дилеру еще одна карта. Если у дилера не больше 16 очков, то он
-      берет еще одну карту.
-    - void FlipFirstCard() - метод переворачивает первую карту дилера.
-
                                                     *******
                                                     * HW7 *
                                                     *******
 
 3.  Создать класс Deck, который наследует от класса Hand и представляет собой колоду карт. Класс Deck имеет 4 метода:
 
-    - vold Populate() - Создает стандартную колоду из 52 карт, вызывается из конструктора.
+    - void Populate() - Создает стандартную колоду из 52 карт, вызывается из конструктора.
     - void Shuffle() - Метод, который тасует карты, можно использовать функцию из алгоритмов STL `random_shuffle`
-    - vold Deal (Hand& aHand) - метод, который раздает в руку одну карту
-    - void AddltionalCards (GenericPlayer& aGenerlcPlayer) - раздает игроку дополнительные карты до тех пор, пока он может и хочет
+    - void Deal (Hand& aHand) - метод, который раздает в руку одну карту
+    - void AdditionalCards (GenericPlayer& aGenerlcPlayer) - раздает игроку дополнительные карты до тех пор, пока он может и хочет
       их получать
 
     ** Обратите внимание на применение полиморфизма. В каких методах применяется этот принцип ООП?
@@ -58,6 +38,14 @@ using namespace std;
 
 int main()
 {
+    vector<string> names = {"Player 1","Player 2","Player 3","Player 4",
+                            "Player 5","Player 6","Player 7","Player 8"};
+    Game game(names);
+
+    for (char a = 'y'; (a == 'y' || a == 'Y'); cin >> a) {
+        game.Play();
+        cout << "The game is over, do you want to repeat? (y/n): ";
+    }//for (char a = 'y'; (a == 'y' && a == 'Y'); cin >> a)
 
     return 0;
 }//int main()
