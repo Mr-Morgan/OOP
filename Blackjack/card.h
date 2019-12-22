@@ -7,7 +7,7 @@
 #define BlackJack 21
 
 enum Suit { clubs, diamonds, hearts, spades };
-enum Value { ace = 1, two, three, four, five, six, seven, eight, nine, ten = 10, jack = 10, queen = 10, king = 10 };
+enum Value { ace = 1, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king };
 
 class Card
 {
@@ -15,7 +15,7 @@ class Card
     Value v;
     bool visible;
 public:
-    Card(Suit st, Value vl): s(st), v(vl), visible(false) {}
+    Card(Suit st, Value vl): s(st), v(vl), visible(true) {}
     void Flip();
     int GetValue() const;
     Suit GetSuit() const;

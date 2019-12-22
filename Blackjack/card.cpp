@@ -1,18 +1,35 @@
 #include "card.h"
 
-std::string printSuit(Suit s)
+char printSuit(Suit s)
 {
     switch (s) {
-    case clubs:     return "Clubs";
-    case diamonds:  return "Diamonds";
-    case hearts:    return "Hearts";
-    case spades:    return "Spades";
+    case clubs:     return 'C';
+    case diamonds:  return 'D';
+    case hearts:    return 'H';
+    case spades:    return 'S';
     }//switch (s)
-}//std::string printSuit(Suit s)
+}//char printSuit(Suit s)
+
+char printValue(Value v)
+{
+    switch (v) {
+    case ace:   return 'A';
+    case jack:  return 'J';
+    case queen: return 'Q';
+    case king:  return 'K';
+    default: break;
+    }//switch (v)
+}//char printValue(Value v)
 
 std::ostream &operator<<(std::ostream &os, const Card &c)
 {
-    return c.GetVisible()? os << printSuit(c.s) + ' ' << c.v << "; " : os << "XX; ";
+    if (c.GetVisible()) {
+        os << printSuit(c.s);
+        if (c.v > ten || c.v == ace) os << printValue(c.v);
+        else os << c.v;
+        os << "; ";
+    } else os << "XX; ";
+    return os;
 }//std::ostream &Card::operator<<(std::ostream &os, const Card &c)
 
 void Card::Flip()

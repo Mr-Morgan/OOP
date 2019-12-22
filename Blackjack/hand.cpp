@@ -21,6 +21,7 @@ int Hand::GetValue() const
     int score = 0, ace_count = 0;
     for (Card* card : hand)
         if(card->GetValue() == Value::ace) ace_count++;
+        else if (card->GetValue() > Value::ten) score += Value::ten;
         else score += card->GetValue();
     for (int i = 0; i < ace_count; ++i)
         if (score <= 10) score += 11;
