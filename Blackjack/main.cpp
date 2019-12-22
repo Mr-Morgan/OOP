@@ -36,13 +36,30 @@
 
 using namespace std;
 
+vector<string> setNamesOfPlayers(istream &is, ostream &os)
+{
+    vector<string> n;
+    os << "Please enter the number of players: ";
+    unsigned numb = 0;
+    is >> numb;
+    n.reserve(numb);
+    string name = "???";
+    for (unsigned i = 0; i < numb; ++i) {
+        os << "Please enter a player name (" << i+1 << "): ";
+        is >> name;
+        n.push_back(name);
+    }//for (unsigned i = 0; i < numb; ++i)
+    return n;
+}//vector<string> &setNamesOfPlayers(istream &is, ostream &os)
+
 int main()
 {
-    vector<string> names = {"Player 1","Player 2","Player 3","Player 4",
-                            "Player 5","Player 6","Player 7","Player 8"};
+    cout << "\tWelcome to the game BlackJack!\n\n";
+    vector<string> names = setNamesOfPlayers(cin, cout);
     Game game(names);
 
     for (char a = 'y'; (a == 'y' || a == 'Y'); cin >> a) {
+        cout << "\n\tGame begins!\n\n";
         game.Play();
         cout << "The game is over, do you want to repeat? (y/n): ";
     }//for (char a = 'y'; (a == 'y' && a == 'Y'); cin >> a)

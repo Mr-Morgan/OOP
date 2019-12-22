@@ -68,7 +68,7 @@ ostream &operator<<(ostream &os, const Date &d)
 }//ostream &operator<<(ostream &os, const Date &d)
 
 /*********************** Ex. 2 ****************************/
-Date comparison(const unique_ptr<Date> &d1, const unique_ptr<Date> &d2)
+Date &comparison(const unique_ptr<Date> &d1, const unique_ptr<Date> &d2)
 {
    if((d1->getYear() > d2->getYear())) return *d1;
    else if (d1->getYear() < d2->getYear()) return *d2;
